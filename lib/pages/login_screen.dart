@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,23 +13,17 @@ class _LoginScreenState extends State<LoginScreen> {
   bool obscureText = true;
 
   // دالة إرسال البريد الإلكتروني
+  // ملاحظة: يجب استخدام متغيرات البيئة أو Firebase Cloud Functions للأمان
   Future<void> sendEmailNotification(String email) async {
-    String username = '3oraby143@gmail.com'; // بريدك الإلكتروني
-    String password = '123456789'; // كلمة مرور التطبيق (App Password)
-
-    final smtpServer = gmail(username, password);
-    final message = Message()
-      ..from = Address(username, 'تطبيق تسجيل الدخول')
-      ..recipients.add('3oraby143@gmail.com') // البريد الذي ستستلم الإشعارات
-      ..subject = 'إشعار تسجيل دخول جديد'
-      ..text = 'تم تسجيل دخول جديد بواسطة البريد الإلكتروني: $email';
-
-    try {
-      await send(message, smtpServer);
-      print('تم إرسال الإشعار بنجاح');
-    } catch (e) {
-      print('فشل إرسال الإشعار: $e');
-    }
+    // TODO: استبدل هذا برابط Firebase Cloud Function حقيقي
+    // لا تضع كلمات المرور في الكود مباشرة لأسباب أمنية
+    print('إشعار: تم تسجيل دخول بواسطة $email');
+    
+    // مثال للاستخدام المستقبلي مع Cloud Functions:
+    // await http.post(
+    //   Uri.parse('https://YOUR_CLOUD_FUNCTION_URL'),
+    //   body: {'email': email},
+    // );
   }
 
   // دالة لإعادة تعيين كلمة المرور

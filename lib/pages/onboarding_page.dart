@@ -12,12 +12,14 @@ class OnboardingPage1 extends StatelessWidget {
           description: 'استمتع بافضل مافي العالم .',
           imageUrl: 'https://i.ibb.co/cJqsPSB/scooter.png',
           bgColor: Color(0xFFB0B0B0),
+          textColor: Colors.black,
         ),
         OnboardingPageModel(
           title: 'طلبك هنا',
           description: 'تقديم مجموعه واسعه من المنتجات لتلبيه احتياجاتك',
           imageUrl: 'https://i.ibb.co/LvmZypG/storefront-illustration-2.png',
           bgColor: const Color(0xff1eb090),
+          textColor: Colors.white,
         ),
         OnboardingPageModel(
           title: 'احجز طلبك المفضل ',
@@ -25,12 +27,14 @@ class OnboardingPage1 extends StatelessWidget {
               'استمتع بتجربه تسوق فريده من نوعها مع مجموعه مختاره من المنتجات التي تناسب ذوقك',
           imageUrl: 'https://i.ibb.co/420D7VP/building.png',
           bgColor: const Color(0xfffeae4f),
+          textColor: Colors.black,
         ),
         OnboardingPageModel(
           title: 'هيا بنا نبدا',
           description: 'اكتشف كافه الخدمات والمنتجات الفريده التي نقدمها لتلبيه احتياجاتك',
           imageUrl: 'https://i.ibb.co/cJqsPSB/scooter.png',
           bgColor: Color.fromARGB(255, 184, 187, 5),
+          textColor: Colors.black,
         ),
       ]),
     );

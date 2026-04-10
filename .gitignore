@@ -1,0 +1,34 @@
+```
+# Dependencies
+.pub/
+.build/
+.dart_tool/
+
+# Logs
+*.log
+**/logs
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+build/
+dist/
+target/
+
+# Temporary files
+*.tmp
+*.temp
+```
