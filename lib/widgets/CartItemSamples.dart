@@ -1,13 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CartItemSamples extends StatelessWidget {
-  final List<Map<String, String>> items = [
-    {"name": "ساعه", "price": "\$100"},
-    {"name": "برجر", "price": "\$130"},
-    {"name": "سياره مرسيدس", "price": "\$27,500"},
-  ];
+class CartItemSamples extends StatefulWidget {
+  @override
+  _CartItemSamplesState createState() => _CartItemSamplesState();
+}
 
+class _CartItemSamplesState extends State<CartItemSamples> {
+  final List<Map<String, dynamic>> items = [
+    {"name": "ساعه", "price": "\$100", "quantity": 1, "isSelected": false},
+    {"name": "برجر", "price": "\$130", "quantity": 1, "isSelected": false},
+    {"name": "سياره مرسيدس", "price": "\$27,500", "quantity": 1, "isSelected": false},
+  ];
+  
+  String? selectedItemId;
+  
+  void _updateQuantity(int index, int change) {
+    setState(() {
+      items[index]['quantity'] = (items[index]['quantity'] + change).clamp(1, 99);
+    });
+  }
+  
+  void _deleteItem(int index) {
+    setState(() {
+      items.removeAt(index);
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,11 +42,19 @@ class CartItemSamples extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Radio(
-                  value: "",
-                  groupValue: "",
+                Radio<String>(
+                  value: items[i]['name'],
+                  groupValue: selectedItemId,
                   activeColor: Color(0xFF4C53A5),
-                  onChanged: (index) {},
+                  onChanged: (value) {
+                    setState(() {
+                      selectedItemId = value;
+                      // تحديث حالة الاختيار للعناصر
+                      for (var item in items) {
+                        item['isSelected'] = (item['name'] == value);
+                      }
+                    });
+                  },
                 ),
                 Container(
                   height: 70,
@@ -42,7 +69,7 @@ class CartItemSamples extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        items[i]["name"]!,
+                        items[i]["name"],
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -50,7 +77,7 @@ class CartItemSamples extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        items[i]["price"]!,
+                        items[i]["price"],
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -67,9 +94,9 @@ class CartItemSamples extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        Icons.delete,
-                        color: Colors.red,
+                      IconButton(
+                        icon: Icon(Icons.delete, color: Colors.red),
+                        onPressed: () => _deleteItem(i),
                       ),
                       Row(
                         children: [
@@ -86,15 +113,17 @@ class CartItemSamples extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Icon(
-                              CupertinoIcons.plus,
-                              size: 18,
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              constraints: BoxConstraints(minWidth: 0, minHeight: 0),
+                              icon: Icon(CupertinoIcons.plus, size: 18),
+                              onPressed: () => _updateQuantity(i, 1),
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
-                              "01",
+                              "${items[i]['quantity']}".padLeft(2, '0'),
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -115,9 +144,11 @@ class CartItemSamples extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Icon(
-                              CupertinoIcons.minus,
-                              size: 18,
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              constraints: BoxConstraints(minWidth: 0, minHeight: 0),
+                              icon: Icon(CupertinoIcons.minus, size: 18),
+                              onPressed: () => _updateQuantity(i, -1),
                             ),
                           ),
                         ],

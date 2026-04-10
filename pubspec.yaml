@@ -1,0 +1,65 @@
+name: shope
+description: A Flutter e-commerce application.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Firebase
+  firebase_core: ^2.24.0
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+  
+  # UI & Widgets
+  cupertino_icons: ^1.0.6
+  
+  # Networking
+  http: ^1.1.0
+  
+  # Email (optional - for future use)
+  mailer: ^6.0.1
+  
+  # State Management (recommended)
+  provider: ^6.1.1
+  
+  # Image caching
+  cached_network_image: ^3.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - images/
+    - images/1.png
+    - images/2.png
+    - images/3.png
+    - images/4.png
+    - images/5.png
+    - images/6.png
+    - images/7.png
+    - images/8.png
+    - images/9.png
+    - images/10.png
+    - images/11.png
+    - images/12.png
+    - images/13.png
+    - images/14.png
+    - images/15.png
+    - images/16.png
+    - images/17.png
+    - images/RM_Farouk_logo_transparent.png
+    - images/back.jpg
+    - images/background_image.jpg
+    - images/el-logo.webp
+    - images/logo page login.webp
+    - images/Video .mp4

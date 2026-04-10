@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:http/http.dart' as http;
 
 class AuthService {
   // تسجيل الدخول
@@ -18,14 +17,19 @@ class AuthService {
   }
 
   // دالة إرسال الإشعار للإدمن
+  // TODO: استبدل هذا برابط Firebase Cloud Function حقيقي
   Future<void> sendNotificationToAdmin(String status, String message) async {
-    final url = "https://your-cloud-function-url"; // رابط الدالة السحابية
-    await http.post(
-      Uri.parse(url),
-      body: {
-        "status": status,
-        "message": message,
-      },
-    );
+    // ملاحظة: يجب استخدام Firebase Cloud Functions أو خدمة إشعارات حقيقية
+    print('إشعار للأدمن: [$status] $message');
+    
+    // مثال للاستخدام المستقبلي:
+    // final url = \"https://YOUR_ACTUAL_CLOUD_FUNCTION_URL\";
+    // await http.post(
+    //   Uri.parse(url),
+    //   body: {
+    //     "status": status,
+    //     "message": message,
+    //   },
+    // );
   }
 }
